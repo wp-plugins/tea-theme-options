@@ -4,7 +4,7 @@ Donate link: https://github.com/Takeatea/tea_theme_options
 Tags: theme, options, pages, custom post types
 Requires at least: 3.4.2
 Tested up to: 3.6
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
