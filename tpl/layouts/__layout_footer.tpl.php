@@ -20,7 +20,7 @@
 
                         <div class="inside">
                             <p><?php echo sprintf(__('Your Tea Theme Option is in <b>version %s</b>', TTO_I18N), $version) ?></p>
-                            <p><?php echo sprintf(__('Please, contact <a href="mailto:teatime@takeatea.com?subject=Tea Theme Options on %s - version %s"><b>teatime@takeatea.com</b></a> if you have any suggestions.', TTO_I18N), BLOG_NAME, $version) ?></p>
+                            <p><?php echo sprintf(__('Please, contact <a href="mailto:teatime@takeatea.com?subject=Tea Theme Options on %s - version %s"><b>teatime@takeatea.com</b></a> if you have any suggestions.', TTO_I18N), get_bloginfo('name'), $version) ?></p>
                         </div>
                     </div>
                     <?php _e('&copy; 2013, Take a tea. All rights reserved.', TTO_I18N) ?>
@@ -32,7 +32,7 @@
     <?php if ($submit): ?></form><?php endif ?>
 </div>
 
-<script type="template/html" id="__tea-template" class="jdfksfjhkdf">
+<script type="template/html" id="__tea-template">
     <div id="__tea-shortcodes" class="tea-shortcodes" tabindex="0" style="display:none;">
         <div class="media-modal wp-core-ui">
             <a class="media-modal-close" href="#" title="Fermer"><span class="media-modal-icon"></span></a>

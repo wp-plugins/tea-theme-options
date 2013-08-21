@@ -4,10 +4,10 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Theme Options
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.1
  *
  * Plugin Name: Tea Theme Options
- * Version: 1.4.0
+ * Version: 1.4.1
  * Plugin URI: https://github.com/Takeatea/tea_to_wp
  * Description: The Tea Theme Options (or "Tea TO") allows you to easily add professional looking theme options panels to your WordPress theme.
  * Author: Achraf Chouk
@@ -43,7 +43,7 @@ if (!defined('ABSPATH')) {
 //---------------------------------------------------------------------------------------------------------//
 
 //Usefull definitions for the Tea Theme Options
-defined('TTO_VERSION')      or define('TTO_VERSION', '1.4.0');
+defined('TTO_VERSION')      or define('TTO_VERSION', '1.4.1');
 defined('TTO_I18N')         or define('TTO_I18N', 'teathemeoptions');
 defined('TTO_DURATION')     or define('TTO_DURATION', 86400);
 defined('TTO_INSTAGRAM')    or define('TTO_INSTAGRAM', 'http://takeatea.com/instagram.php');
@@ -62,7 +62,7 @@ defined('TTO_NONCE')        or define('TTO_NONCE', 'tea-ajax-nonce');
  *
  * To get its own settings
  *
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.1
  * @todo Special field:     Typeahead, Date, Geolocalisation
  * @todo Shortcodes panel:  Youtube, Vimeo, Dailymotion, Google Maps, Google Adsense,
  *                          Related posts, Private content, RSS Feed, Embed PDF,
@@ -355,7 +355,7 @@ class Tea_Theme_Options
      * @uses wp_enqueue_media()
      * @uses wp_enqueue_script()
      *
-     * @since Tea Theme Options 1.3.0
+     * @since Tea Theme Options 1.4.1
      */
     public function __assetScripts()
     {
@@ -369,7 +369,15 @@ class Tea_Theme_Options
         $directory = $this->getDirectory();
 
         //Enqueue usefull scripts
-        wp_enqueue_media();
+        if (function_exists('wp_enqueue_media'))
+        {
+            wp_enqueue_media();
+        }
+        else
+        {
+            wp_enqueue_script('media-upload');
+        }
+
         wp_enqueue_script('wp-color-picker');
         wp_enqueue_script('accordion');
         wp_enqueue_script('tea-modal', $directory . '/js/teamodal.js', array('jquery'));
@@ -1125,7 +1133,7 @@ class Tea_Theme_Options
     protected function getFields()
     {
         $defaults = array(
-            'br', 'heading', 'hr', 'list', 'p', 'checkbox',
+            'br', 'features', 'heading', 'hr', 'list', 'p', 'checkbox',
             'hidden', 'radio', 'select', 'multiselect',
             'text', 'textarea', 'background', 'color', 'font',
             'include', 'rte', 'social', 'upload', 'wordpress'

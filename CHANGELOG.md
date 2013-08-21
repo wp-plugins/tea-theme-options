@@ -1,3 +1,11 @@
+## 1.4.1 (August 21, 2013)
+
+Fix retrocompatibility with Wordpress 3.4 version
+
+- **Fix:**
+  - Bug on footer layout
+
+
 ## 1.4.0 (August 20, 2013)
 
 Get real advices from Nicolas A. <https://twitter.com/nicolassing> from Take a Tea :)
