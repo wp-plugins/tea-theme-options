@@ -8,7 +8,7 @@
  *
  * Plugin Name: Tea Theme Options
  * Version: 1.4.4
- * Plugin URI: https://github.com/Takeatea/tea_to_wp
+ * Plugin URI: https://github.com/Takeatea/tea_theme_options
  * Description: The Tea Theme Options (or "Tea TO") allows you to easily add professional looking theme options panels to your WordPress theme.
  * Author: Achraf Chouk
  * Author URI: http://takeatea.com/
