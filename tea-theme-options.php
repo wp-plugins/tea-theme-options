@@ -95,7 +95,6 @@ class Tea_Theme_Options
 
             //Registration hooks
             register_activation_hook(__FILE__, array(&$this, '__adminInstall'));
-            register_uninstall_hook(__FILE__, array('Tea_Theme_Options', '__adminUninstall'));
 
             //Page component
             require_once(TTO_PATH . 'classes/class-tea-pages.php');
@@ -139,55 +138,6 @@ class Tea_Theme_Options
         }
 
         //Nothing to do...
-    }
-
-    /**
-     * Hook uninstall plugin.
-     *
-     * @uses check_admin_referer()
-     * @uses current_user_can()
-     * @uses delete_option()
-     *
-     * @since Tea Theme Options 1.4.4
-     */
-    static function __adminUninstall()
-    {
-        if (!current_user_can('activate_plugins'))
-        {
-            return;
-        }
-
-        //Check the Wordpress admin referrer and the nounce value
-        check_admin_referer('bulk-plugins');
-
-        //Important: Check if the file is the one
-        //that was registered during the uninstall hook.
-        if (!defined(WP_UNINSTALL_PLUGIN) || __FILE__ != WP_UNINSTALL_PLUGIN)
-        {
-            return;
-        }
-
-        //Delete configs
-        delete_option('tea_config_pages');
-        delete_option('tea_config_cpts');
-
-        //Delete FlickR
-        delete_option('tea_flickr_user_info');
-        delete_option('tea_flickr_user_details');
-        delete_option('tea_flickr_user_recent');
-        delete_option('tea_flickr_connection_update');
-
-        //Delete Instagram
-        delete_option('tea_instagram_access_token');
-        delete_option('tea_instagram_user_info');
-        delete_option('tea_instagram_user_recent');
-        delete_option('tea_instagram_connection_update');
-
-        //Delete Twitter
-        delete_option('tea_twitter_access_token');
-        delete_option('tea_twitter_user_info');
-        delete_option('tea_twitter_user_recent');
-        delete_option('tea_twitter_connection_update');
     }
 
     /**
