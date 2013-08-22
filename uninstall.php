@@ -9,7 +9,7 @@
  */
 
 if (!defined('ABSPATH') || !defined('WP_UNINSTALL_PLUGIN')) {
-    die('You are not authorized to directly access to this page');
+    exit();
 }
 
 //Delete configs
