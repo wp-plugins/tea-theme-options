@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields
- * @since Tea Theme Options 1.4.5
+ * @since Tea Theme Options 1.4.6
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.5
+ * @since Tea Theme Options 1.4.6
  *
  */
 abstract class Tea_Fields
@@ -78,7 +78,7 @@ abstract class Tea_Fields
      * @param array $wanted Usefull in social case to return only what the user wants
      * @return array $defaults All defaults data provided by the Tea TO
      *
-     * @since Tea Theme Options 1.4.0
+     * @since Tea Theme Options 1.4.6
      */
     protected function getDefaults($return = 'images', $wanted = array())
     {
@@ -165,7 +165,7 @@ abstract class Tea_Fields
                 'honeycomb.png'      => __('Honeycomb', TTO_I18N),
                 'linen.png'          => __('Linen', TTO_I18N),
                 'project_paper.png'  => __('Project paper', TTO_I18N),
-                'texture.png'        => __('Tetxure', TTO_I18N),
+                'texture.png'        => __('Texture', TTO_I18N),
                 'vertical_lines.png' => __('Vertical lines', TTO_I18N),
                 'vichy.png'          => __('Vichy', TTO_I18N),
                 'wavecut.png'        => __('Wavecut', TTO_I18N),
