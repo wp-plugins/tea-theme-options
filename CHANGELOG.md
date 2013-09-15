@@ -1,3 +1,8 @@
+## 1.4.7.1 (September 15, 2013)
+
+Fix small bug
+
+
 ## 1.4.7 (September 15, 2013)
 
 Make this new version works with the old Tea T.O.

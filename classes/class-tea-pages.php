@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Pages
- * @since Tea Theme Options 1.4.7
+ * @since Tea Theme Options 1.4.7.1
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Pages
  *
- * @since Tea Theme Options 1.4.7
+ * @since Tea Theme Options 1.4.7.1
  *
  */
 class Tea_Pages
@@ -257,7 +257,7 @@ class Tea_Pages
      *
      * @uses add_menu()
      *
-     * @since Tea Theme Options 1.4.7
+     * @since Tea Theme Options 1.4.7.1
      */
     public function __buildAdminBar()
     {
@@ -281,7 +281,7 @@ class Tea_Pages
         foreach ($this->pages as $page)
         {
             //Check the page slug for '?' and '??' characters
-            if ('?' == $page['slug'] || '??' == $page['slug'])
+            if ($this->identifier.'?' == $page['slug'] || $this->identifier.'??' == $page['slug'])
             {
                 continue;
             }
@@ -382,7 +382,7 @@ class Tea_Pages
      * @uses add_menu_page()
      * @uses add_submenu_page()
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.7.1
      */
     public function __buildMenuPage()
     {
@@ -439,6 +439,12 @@ class Tea_Pages
                     $page['slug'],                  //menu slug
                     array(&$this, 'buildContent')   //function to display content
                 );
+            }
+
+            //Check the page slug for '?' and '??' characters
+            if ($this->identifier.'?' == $page['slug'] || $this->identifier.'??' == $page['slug'])
+            {
+                continue;
             }
 
             //Build breadcrumb
