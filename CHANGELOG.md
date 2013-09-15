@@ -1,3 +1,8 @@
+## 1.4.7.2 (September 16, 2013)
+
+Fix small bug on font saved contents
+
+
 ## 1.4.7.1 (September 15, 2013)
 
 Fix small bug

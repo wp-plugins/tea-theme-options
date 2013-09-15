@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Font
- * @since Tea Theme Options 1.4.5
+ * @since Tea Theme Options 1.4.7.2
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.5
+ * @since Tea Theme Options 1.4.7.2
  *
  */
 class Tea_Fields_Font extends Tea_Fields
@@ -142,7 +142,7 @@ class Tea_Fields_Font extends Tea_Fields
      * @param array $content Content sent throught Dahsboard forms.
      * @return array $content Content modified.
      *
-     * @since Tea Theme Options 1.4.5
+     * @since Tea Theme Options 1.4.7.2
      */
     static function saveContent($content)
     {
@@ -177,10 +177,6 @@ class Tea_Fields_Font extends Tea_Fields
                 unset($content['options'][$k]);
                 continue;
             }
-
-            //Create value from label
-            $value_sanitized = sanitize_title($ctn[1]);
-            $content['options'][$k][0] = $value_sanitized;
         }
 
         //Get default
