@@ -3,8 +3,8 @@ Contributors: achrafchouk
 Donate link: https://github.com/Takeatea/tea_theme_options
 Tags: theme, options, pages, custom post types
 Requires at least: 3.4.2
-Tested up to: 3.6
-Stable tag: 1.4.6
+Tested up to: 3.6.1
+Stable tag: 1.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,10 @@ That's all to begin working with **Tea TO**
 
 
 == Changelog ==
+
+= 1.4.7 (September 15, 2013) =
+Make this new version works with the old Tea T.O.
+Add separator to submenu.
 
 = 1.4.6 (August 25, 2013) =
 Fix lots of bugs on network field.

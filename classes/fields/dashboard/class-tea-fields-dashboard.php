@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Dashboard
- * @since Tea Theme Options 1.4.5
+ * @since Tea Theme Options 1.4.7
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.5
+ * @since Tea Theme Options 1.4.7
  *
  */
 class Tea_Fields_Dashboard extends Tea_Fields
@@ -181,7 +181,7 @@ class Tea_Fields_Dashboard extends Tea_Fields
 
         //Get vars
         $title = $request['tea_add_page_title'];
-        $slug = '_' . sanitize_title($title);
+        $slug = sanitize_title($title);
         $description = isset($request['tea_add_page_description']) ? $request['tea_add_page_description'] : '';
         $submit = isset($request['tea_add_page_submit']) ? $request['tea_add_page_submit'] : '1';
         $submit = '1' == $submit ? true : false;
@@ -214,7 +214,7 @@ class Tea_Fields_Dashboard extends Tea_Fields
      *
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.5
+     * @since Tea Theme Options 1.4.7
      */
     protected function addPageContent($request)
     {
@@ -305,7 +305,9 @@ class Tea_Fields_Dashboard extends Tea_Fields
                         $old_id = isset($pages[$slug]['contents'][$key]['id']) && !empty($pages[$slug]['contents'][$key]['id']) ? $pages[$slug]['contents'][$key]['id'] : '';
 
                         //Make the new ID
-                        $ctn['id'] = !empty($old_id) ? $old_id : $slug . '_' . sanitize_title($ctn['title']);
+                        $sanittitle = sanitize_title($ctn['title']);
+                        $sanittitle = str_replace('-', '_', $sanittitle);
+                        $ctn['id'] = !empty($old_id) ? $old_id : $slug . '_' . $sanittitle;
                     }
 
                     //Include class field

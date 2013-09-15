@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Pages
- * @since Tea Theme Options 1.4.3
+ * @since Tea Theme Options 1.4.7
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Pages
  *
- * @since Tea Theme Options 1.4.3
+ * @since Tea Theme Options 1.4.7
  *
  */
 class Tea_Pages
@@ -107,7 +107,7 @@ class Tea_Pages
      *
      * @uses add_action()
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.7
      */
     public function buildMenus()
     {
@@ -146,7 +146,7 @@ class Tea_Pages
             $titles = array(
                 'title' => $page['title'],
                 'name' => $page['name'],
-                'slug' => $page['slug'],
+                'slug' => '_' . $page['slug'],
                 'submit' => $page['submit']
             );
             //Get contents
@@ -257,7 +257,7 @@ class Tea_Pages
      *
      * @uses add_menu()
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.7
      */
     public function __buildAdminBar()
     {
@@ -280,6 +280,12 @@ class Tea_Pages
         //Add submenu pages
         foreach ($this->pages as $page)
         {
+            //Check the page slug for '?' and '??' characters
+            if ('?' == $page['slug'] || '??' == $page['slug'])
+            {
+                continue;
+            }
+
             //Check the main page
             if ($this->identifier == $page['slug'])
             {
@@ -656,7 +662,7 @@ class Tea_Pages
      *
      * @param number $step Define which default pages do we need
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.7
      */
     protected function buildDefaults($step = 1)
     {
@@ -675,10 +681,24 @@ class Tea_Pages
             //Build page with contents
             $this->addPage($titles, $details);
             unset($titles, $details);
+
+            //Get separator
+            include('tpl/contents/__content_separator.tpl.php');
+
+            //Build page with contents
+            $this->addPage($titles, $details);
+            unset($titles, $details);
         }
         //Get the next one at the end
         else
         {
+            //Get separator
+            include('tpl/contents/__content_separator.tpl.php');
+
+            //Build page with contents
+            $this->addPage($titles, $details);
+            unset($titles, $details);
+
             //Get network connections page contents
             include('tpl/contents/__content_connections.tpl.php');
 

@@ -1,3 +1,9 @@
+## 1.4.7 (September 15, 2013)
+
+Make this new version works with the old Tea T.O.
+Add separator to submenu.
+
+
 ## 1.4.6 (August 25, 2013)
 
 Fix lots of bugs on network field.
