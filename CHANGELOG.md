@@ -1,3 +1,8 @@
+## 1.4.7.4 (September 16, 2013)
+
+Add description to pages
+
+
 ## 1.4.7.3 (September 16, 2013)
 
 Fix small bug on dashboard edit page

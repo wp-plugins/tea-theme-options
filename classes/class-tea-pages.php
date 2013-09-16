@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Pages
- * @since Tea Theme Options 1.4.7.1
+ * @since Tea Theme Options 1.4.7.4
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Pages
  *
- * @since Tea Theme Options 1.4.7.1
+ * @since Tea Theme Options 1.4.7.4
  *
  */
 class Tea_Pages
@@ -107,7 +107,7 @@ class Tea_Pages
      *
      * @uses add_action()
      *
-     * @since Tea Theme Options 1.4.7
+     * @since Tea Theme Options 1.4.7.4
      */
     public function buildMenus()
     {
@@ -146,6 +146,7 @@ class Tea_Pages
             $titles = array(
                 'title' => $page['title'],
                 'name' => $page['name'],
+                'description' => $page['description'],
                 'slug' => '_' . $page['slug'],
                 'submit' => $page['submit']
             );
