@@ -1,3 +1,8 @@
+## 1.4.7.3 (September 16, 2013)
+
+Fix small bug on dashboard edit page
+
+
 ## 1.4.7.2 (September 16, 2013)
 
 Fix small bug on font saved contents

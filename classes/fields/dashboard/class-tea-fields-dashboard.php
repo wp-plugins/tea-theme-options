@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Dashboard
- * @since Tea Theme Options 1.4.7
+ * @since Tea Theme Options 1.4.7.3
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.7
+ * @since Tea Theme Options 1.4.7.3
  *
  */
 class Tea_Fields_Dashboard extends Tea_Fields
@@ -214,7 +214,7 @@ class Tea_Fields_Dashboard extends Tea_Fields
      *
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.7
+     * @since Tea Theme Options 1.4.7.3
      */
     protected function addPageContent($request)
     {
@@ -259,6 +259,7 @@ class Tea_Fields_Dashboard extends Tea_Fields
             //Get vars
             $title = $request['tea_edit_page_title'];
             $description = isset($request['tea_edit_page_description']) ? $request['tea_edit_page_description'] : '';
+            $contents = isset($pages[$slug]['contents']) ? $pages[$slug]['contents'] : array();
             $submit = isset($request['tea_edit_page_submit']) ? $request['tea_edit_page_submit'] : '1';
             $submit = '1' == $submit ? true : false;
 
@@ -268,7 +269,8 @@ class Tea_Fields_Dashboard extends Tea_Fields
                 'name' => $title,
                 'description' => $description,
                 'submit' => $submit,
-                'slug' => $slug
+                'slug' => $slug,
+                'contents' => $contents
             );
 
             //Insert pages in DB

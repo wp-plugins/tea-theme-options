@@ -4,10 +4,10 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Theme Options
- * @since Tea Theme Options 1.4.7.2
+ * @since Tea Theme Options 1.4.7.3
  *
  * Plugin Name: Tea Theme Options
- * Version: 1.4.7.2
+ * Version: 1.4.7.3
  * Plugin URI: https://github.com/Takeatea/tea_theme_options
  * Description: The Tea Theme Options (or "Tea TO") allows you to easily add professional looking theme options panels to your WordPress theme.
  * Author: Achraf Chouk
@@ -40,7 +40,7 @@ if (!defined('ABSPATH')) {
 //---------------------------------------------------------------------------------------------------------//
 
 //Usefull definitions for the Tea Theme Options
-defined('TTO_VERSION')      or define('TTO_VERSION', '1.4.7.2');
+defined('TTO_VERSION')      or define('TTO_VERSION', '1.4.7.3');
 defined('TTO_I18N')         or define('TTO_I18N', 'tea_theme_options');
 defined('TTO_DURATION')     or define('TTO_DURATION', 86400);
 defined('TTO_URI')          or define('TTO_URI', plugins_url().'/'.basename(dirname(__FILE__)).'/');
@@ -57,7 +57,7 @@ defined('TTO_NONCE')        or define('TTO_NONCE', 'tea-ajax-nonce');
  *
  * To get its own settings
  *
- * @since Tea Theme Options 1.4.7.2
+ * @since Tea Theme Options 1.4.7.3
  * @todo Special field:     Typeahead, Date, Geolocalisation
  * @todo Shortcodes panel:  Youtube, Vimeo, Dailymotion, Google Maps, Google Adsense,
  *                          Related posts, Private content, RSS Feed, Embed PDF,

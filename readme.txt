@@ -4,7 +4,7 @@ Donate link: https://github.com/Takeatea/tea_theme_options
 Tags: theme, options, pages, custom post types
 Requires at least: 3.4.2
 Tested up to: 3.6.1
-Stable tag: 1.4.7.2
+Stable tag: 1.4.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,9 @@ That's all to begin working with **Tea TO**
 
 
 == Changelog ==
+
+= 1.4.7.3 (September 16, 2013) =
+Fix small bug on dashboard edit page
 
 = 1.4.7.2 (September 16, 2013) =
 Fix small bug on font saved contents
