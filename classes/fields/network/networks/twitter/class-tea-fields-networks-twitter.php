@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Networks Twitter
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.8
  *
  */
 
@@ -17,6 +17,8 @@ if (!defined('ABSPATH')) {
 
 //Require master Class
 require_once(TTO_PATH . 'classes/class-tea-networks.php');
+//Define statics
+define('TTO_TWITTER', 'http://takeatea.com/twitter.php');
 
 //---------------------------------------------------------------------------------------------------------//
 
@@ -25,19 +27,12 @@ require_once(TTO_PATH . 'classes/class-tea-networks.php');
  *
  * To get its own Network
  *
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.8
  *
  */
 class Tea_Networks_Twitter extends Tea_Networks
 {
     //Define protected vars
-
-    /**
-     * Constructor.
-     *
-     * @since Tea Theme Options 1.4.0
-     */
-    public function __construct(){}
 
 
     //--------------------------------------------------------------------------//
@@ -98,14 +93,14 @@ class Tea_Networks_Twitter extends Tea_Networks
      * @uses header()
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.0
+     * @since Tea Theme Options 1.4.8
      */
     public function getCallback($request)
     {
         //Check if a network connection is asked
         if (!isset($request['tea_to_callback']))
         {
-            echo __('Something went wrong in your parameters definition. You need to specify a callback network to update the informations.', TTO_I18N);
+            $this->adminmessage = __('Something went wrong in your parameters definition. You need to specify a callback network to update the informations.', TTO_I18N);
             return false;
         }
 

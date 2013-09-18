@@ -1,3 +1,8 @@
+## 1.4.8 (September 18, 2013)
+
+Fix lots of bugs about networks
+
+
 ## 1.4.7.5 (September 18, 2013)
 
 Fix CRON access bug

@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Networks Flickr
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.8
  *
  */
 
@@ -25,19 +25,12 @@ require_once(TTO_PATH . 'classes/class-tea-networks.php');
  *
  * To get its own Network
  *
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.8
  *
  */
 class Tea_Networks_Flickr extends Tea_Networks
 {
     //Define protected vars
-
-    /**
-     * Constructor.
-     *
-     * @since Tea Theme Options 1.4.0
-     */
-    public function __construct(){}
 
 
     //--------------------------------------------------------------------------//
@@ -98,14 +91,14 @@ class Tea_Networks_Flickr extends Tea_Networks
      * @uses header()
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.0
+     * @since Tea Theme Options 1.4.8
      */
     public function getCallback($request)
     {
         //Check if a network connection is asked
         if (!isset($request['tea_to_callback']))
         {
-            echo __('Something went wrong in your parameters definition. You need to specify a callback network to update the informations.', TTO_I18N);
+            $this->adminmessage = __('Something went wrong in your parameters definition. You need to specify a callback network to update the informations.', TTO_I18N);
             return false;
         }
 
@@ -168,7 +161,7 @@ class Tea_Networks_Flickr extends Tea_Networks
      * @uses date_i18n()
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.0
+     * @since Tea Theme Options 1.4.8
      */
     public function getUpdate($request = array())
     {
@@ -182,7 +175,7 @@ class Tea_Networks_Flickr extends Tea_Networks
         //Check if a username is defined
         if (isset($request['tea_flickr_install']) && (!isset($request['tea_flickr_username']) || empty($request['tea_flickr_username'])))
         {
-            echo __('Something went wrong in your parameters definition. You need to specify a username to get connected.', TTO_I18N);
+            $this->adminmessage = __('Something went wrong in your parameters definition. You need to specify a username to get connected.', TTO_I18N);
             return false;
         }
 
@@ -214,7 +207,7 @@ class Tea_Networks_Flickr extends Tea_Networks
             //Check if the API returns value
             if (false === $user_info || empty($user_info))
             {
-                echo __('Something went wrong in your parameters definition. The username specified is unknown.', TTO_I18N);
+                $this->adminmessage = __('Something went wrong in your parameters definition. The username specified is unknown.', TTO_I18N);
                 return false;
             }
 
