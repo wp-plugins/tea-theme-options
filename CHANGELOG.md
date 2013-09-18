@@ -1,3 +1,8 @@
+## 1.4.7.5 (September 18, 2013)
+
+Fix CRON access bug
+
+
 ## 1.4.7.4 (September 16, 2013)
 
 Add description to pages

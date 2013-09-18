@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Network
- * @since Tea Theme Options 1.4.6
+ * @since Tea Theme Options 1.4.7.5
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.6
+ * @since Tea Theme Options 1.4.7.5
  *
  */
 class Tea_Fields_Network extends Tea_Fields
@@ -226,9 +226,9 @@ class Tea_Fields_Network extends Tea_Fields
     /**
      * Update all networks data.
      *
-     * @since Tea Theme Options 1.4.0
+     * @since Tea Theme Options 1.4.7.5
      */
-    protected function updateNetworks()
+    public function updateNetworks()
     {
         //Default variables
         $networks = $this->getDefaults('networks');

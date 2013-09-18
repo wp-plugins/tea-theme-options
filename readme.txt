@@ -4,7 +4,7 @@ Donate link: https://github.com/Takeatea/tea_theme_options
 Tags: theme, options, pages, custom post types
 Requires at least: 3.4.2
 Tested up to: 3.6.1
-Stable tag: 1.4.7.4
+Stable tag: 1.4.7.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,9 @@ That's all to begin working with **Tea TO**
 
 
 == Changelog ==
+
+= 1.4.7.5 (September 18, 2013) =
+Fix CRON access bug
 
 = 1.4.7.4 (September 16, 2013) =
 Add description to pages
