@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Custom Post Types
- * @since Tea Theme Options 1.4.9
+ * @since Tea Theme Options 1.4.9.2
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Custom Post Types
  *
- * @since Tea Theme Options 1.4.9
+ * @since Tea Theme Options 1.4.9.2
  *
  */
 class Tea_Custom_Post_Types
@@ -58,7 +58,7 @@ class Tea_Custom_Post_Types
      *
      * @uses register_post_type()
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.2
      */
     public function __buildMenuCustomPostType()
     {
@@ -143,6 +143,9 @@ class Tea_Custom_Post_Types
 
             //Save CPT custom fields
             add_action('save_post', array(&$this, '__saveCustomPostType'));
+
+            //Flush all rewrite rules
+            flush_rewrite_rules();
         }
     }
 

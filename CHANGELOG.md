@@ -1,3 +1,8 @@
+## 1.4.9.2 (September 25, 2013)
+
+Fix bug on flush rewrite rules.
+
+
 ## 1.4.9.1 (September 25, 2013)
 
 Fix bug on static function and move flush rewrite rules on updating CPT.

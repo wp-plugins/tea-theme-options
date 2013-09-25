@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Config
- * @since Tea Theme Options 1.4.9.1
+ * @since Tea Theme Options 1.4.9.2
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.9.1
+ * @since Tea Theme Options 1.4.9.2
  *
  */
 class Tea_Fields_Config extends Tea_Fields
@@ -591,7 +591,7 @@ class Tea_Fields_Config extends Tea_Fields
      *
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.9.1
+     * @since Tea Theme Options 1.4.9.2
      */
     protected function editCustomPostType($request)
     {
@@ -669,9 +669,6 @@ class Tea_Fields_Config extends Tea_Fields
 
         //Insert contents in DB
         _set_option('tea_config_cpts', $cpts);
-
-        //Flush all rewrite rules
-        flush_rewrite_rules();
     }
 
     /**
