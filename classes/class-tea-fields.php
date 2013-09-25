@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields
- * @since Tea Theme Options 1.4.9
+ * @since Tea Theme Options 1.4.9.1
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.9
+ * @since Tea Theme Options 1.4.9.1
  *
  */
 abstract class Tea_Fields
@@ -104,9 +104,9 @@ abstract class Tea_Fields
      * @param array $wanted Usefull in social case to return only what the user wants
      * @return array $defaults All defaults data provided by the Tea TO
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.1
      */
-    public function getDefaults($return = 'images', $wanted = array())
+    static function getDefaults($return = 'images', $wanted = array())
     {
         $defaults = array();
 

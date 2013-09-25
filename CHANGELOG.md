@@ -1,3 +1,8 @@
+## 1.4.9.1 (September 25, 2013)
+
+Fix bug on static function and move flush rewrite rules on updating CPT.
+
+
 ## 1.4.9 (September 25, 2013)
 
 iOS 7 compliant! Euh... bad subject :p
