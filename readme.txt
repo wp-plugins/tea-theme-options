@@ -4,7 +4,7 @@ Donate link: https://github.com/Takeatea/tea_theme_options
 Tags: theme, options, pages, custom post types
 Requires at least: 3.4.2
 Tested up to: 3.6.1
-Stable tag: 1.4.9.2
+Stable tag: 1.4.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,6 +12,9 @@ The Tea Theme Options allows you to easily add professional looking theme option
 
 
 == Changelog ==
+
+= 1.4.9.3 (September 25, 2013) =
+Fix bug on static functions.
 
 = 1.4.9.2 (September 25, 2013) =
 Fix bug on flush rewrite rules.

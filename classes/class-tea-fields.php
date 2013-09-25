@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields
- * @since Tea Theme Options 1.4.9.1
+ * @since Tea Theme Options 1.4.9.3
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.9.1
+ * @since Tea Theme Options 1.4.9.3
  *
  */
 abstract class Tea_Fields
@@ -53,9 +53,9 @@ abstract class Tea_Fields
      * @param array $post Contains all data
      * @param array $args Contains all data
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.3
      */
-    public function templateCustomPostTypes($post, $args)
+    static function templateCustomPostTypes($post, $args)
     {
         //If autosave...
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)

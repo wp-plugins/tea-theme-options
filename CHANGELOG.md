@@ -1,3 +1,8 @@
+## 1.4.9.3 (September 25, 2013)
+
+Fix bug on static functions.
+
+
 ## 1.4.9.2 (September 25, 2013)
 
 Fix bug on flush rewrite rules.
