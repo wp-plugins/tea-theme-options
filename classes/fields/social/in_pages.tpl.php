@@ -1,5 +1,5 @@
 <!-- Content social <?php echo $id ?> -->
-<div id="<?php echo $id ?>_social_content" class="checkboxes stuffbox">
+<div id="<?php echo $id ?>_social_content" class="tea_to_wrap checkboxes stuffbox">
     <h3>
         <label><?php echo $title ?></label>
         <?php if (2 < count($options)): ?>

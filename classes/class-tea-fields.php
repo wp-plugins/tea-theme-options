@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields
- * @since Tea Theme Options 1.4.6
+ * @since Tea Theme Options 1.4.9
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.6
+ * @since Tea Theme Options 1.4.9
  *
  */
 abstract class Tea_Fields
@@ -45,7 +45,33 @@ abstract class Tea_Fields
      **/
 
     abstract protected function templateDashboard($number = '__NUM__', $content = array());
-    abstract protected function templatePages($content);
+    abstract protected function templatePages($content, $post = array());
+
+    /**
+     * Build HTML component to display in all the Tea T.O. defined pages.
+     *
+     * @param array $post Contains all data
+     * @param array $args Contains all data
+     *
+     * @since Tea Theme Options 1.4.9
+     */
+    public function templateCustomPostTypes($post, $args)
+    {
+        //If autosave...
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+        {
+            return $post_id;
+        }
+
+        //Get values
+        $type = $args['args']['contents']['type'];
+        $class = 'Tea_Fields_' . ucfirst($type);
+        require_once(TTO_PATH . 'classes/fields/' . $type . '/class-tea-fields-' . $type . '.php');
+
+        //Make the magic
+        $field = new $class();
+        $field->templatePages($args, $post);
+    }
 
 
     //--------------------------------------------------------------------------//
@@ -78,9 +104,9 @@ abstract class Tea_Fields
      * @param array $wanted Usefull in social case to return only what the user wants
      * @return array $defaults All defaults data provided by the Tea TO
      *
-     * @since Tea Theme Options 1.4.6
+     * @since Tea Theme Options 1.4.9
      */
-    protected function getDefaults($return = 'images', $wanted = array())
+    public function getDefaults($return = 'images', $wanted = array())
     {
         $defaults = array();
 
@@ -106,6 +132,15 @@ abstract class Tea_Fields
                     'repeat-y'      => __('Background is repeated vertically only.', TTO_I18N),
                     'repeat'        => __('Background is repeated.', TTO_I18N)
                 )
+            );
+        }
+        //Return defauls TTO fields for CPTs
+        else if ('fieldscpts' == $return)
+        {
+            $defaults = array(
+                'checkbox', 'radio', 'select', 'multiselect',
+                'text', 'textarea', 'background', 'color',
+                'font', 'rte', 'social', 'upload', 'wordpress'
             );
         }
         //Return defauls TTO fields
@@ -279,6 +314,31 @@ abstract class Tea_Fields
                     'color' => __('Color', TTO_I18N),
                     'font' => __('Google Fonts', TTO_I18N),
                     'include' => __('Include PHP file', TTO_I18N),
+                    'social' => __('Social Links', TTO_I18N),
+                    'rte' => __('Wordpress RTE', TTO_I18N),
+                    'upload' => __('Wordpress Upload', TTO_I18N)
+                ),
+                __('Wordress fields', TTO_I18N) => array(
+                    'wordpress' => __('Categories, menus, pages, posts, posttypes and tags', TTO_I18N)
+                )
+            );
+        }
+        //Return defauls TTO types for CPTs
+        else if ('typescpts' == $return)
+        {
+            $defaults = array(
+                __('Common fields', TTO_I18N) => array(
+                    'text' => __('Basic text, password, email, number and more', TTO_I18N),
+                    'checkbox' => __('Checkbox', TTO_I18N),
+                    'multiselect' => __('Multiselect', TTO_I18N),
+                    'radio' => __('Radio', TTO_I18N),
+                    'select' => __('Select', TTO_I18N),
+                    'textarea' => __('Textarea', TTO_I18N)
+                ),
+                __('Special fields', TTO_I18N) => array(
+                    'background' => __('Background', TTO_I18N),
+                    'color' => __('Color', TTO_I18N),
+                    'font' => __('Google Fonts', TTO_I18N),
                     'social' => __('Social Links', TTO_I18N),
                     'rte' => __('Wordpress RTE', TTO_I18N),
                     'upload' => __('Wordpress Upload', TTO_I18N)

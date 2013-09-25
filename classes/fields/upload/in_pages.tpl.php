@@ -1,5 +1,5 @@
 <!-- Content upload <?php echo $id ?> -->
-<div id="<?php echo $id ?>_upload_content" class="stuffbox">
+<div id="<?php echo $id ?>_upload_content" class="tea_to_wrap stuffbox">
     <h3>
         <label for="<?php echo $id ?>"><?php echo $title ?></label>
         <?php if ($multiple): ?>

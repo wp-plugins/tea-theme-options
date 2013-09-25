@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Multiselect
- * @since Tea Theme Options 1.4.5
+ * @since Tea Theme Options 1.4.9
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.5
+ * @since Tea Theme Options 1.4.9
  *
  */
 class Tea_Fields_Multiselect extends Tea_Fields
@@ -72,12 +72,21 @@ class Tea_Fields_Multiselect extends Tea_Fields
      *
      * @param array $content Contains all data
      *
-     * @since Tea Theme Options 1.4.0
+     * @since Tea Theme Options 1.4.9
      */
-    public function templatePages($content)
+    public function templatePages($content, $post = array())
     {
         //Check if an id is defined at least
-        $this->checkId($content);
+        if (empty($post))
+        {
+            //Check if an id is defined at least
+            $this->checkId($content);
+        }
+        else
+        {
+            //Modify content
+            $content = $content['args']['contents'];
+        }
 
         //Default variables
         $id = $content['id'];
@@ -86,9 +95,21 @@ class Tea_Fields_Multiselect extends Tea_Fields
         $std = isset($content['std']) ? $content['std'] : array();
         $options = isset($content['options']) ? $content['options'] : array();
 
-        //Check selected
-        $vals = $this->getOption($id, $std);
-        $vals = empty($vals) ? array(0) : (is_array($vals) ? $vals : array($vals));
+        //Default way
+        if (empty($post))
+        {
+            //Check selected
+            $vals = $this->getOption($id, $std);
+            $vals = empty($vals) ? array(0) : (is_array($vals) ? $vals : array($vals));
+        }
+        //On CPT
+        else
+        {
+            //Check selected
+            $value = get_post_custom($post->ID);
+            $vals = isset($value[$post->post_type . '-' . $id]) ? unserialize($value[$post->post_type . '-' . $id][0]) : $std;
+            $vals = empty($vals) ? array(0) : (is_array($vals) ? $vals : array($vals));
+        }
 
         //Get template
         include('in_pages.tpl.php');
@@ -107,7 +128,7 @@ class Tea_Fields_Multiselect extends Tea_Fields
      * @param array $content Content sent throught Dahsboard forms.
      * @return array $content Content modified.
      *
-     * @since Tea Theme Options 1.4.5
+     * @since Tea Theme Options 1.4.9
      */
     static function saveContent($content)
     {
@@ -144,11 +165,11 @@ class Tea_Fields_Multiselect extends Tea_Fields
             }
 
             //Create value from label
-            $value_sanitized = sanitize_title($ctn[1]);
+            $value_sanitized = sanitize_title_with_dashes($ctn[1]);
             $content['options'][$k][0] = $value_sanitized;
 
             //Check if we want it as default
-            if (isset($default[$k]) && !array_key_exists($value_sanitized, $content['std']))
+            if (isset($default[$k]) && isset($content['std']) && !array_key_exists($value_sanitized, $content['std']))
             {
                 $content['std'][$value_sanitized] = 1;
             }

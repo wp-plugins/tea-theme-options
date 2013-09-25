@@ -1,5 +1,5 @@
 <!-- Content background <?php echo $id ?> -->
-<div id="<?php echo $id ?>_background_content" class="checkboxes stuffbox">
+<div id="<?php echo $id ?>_background_content" class="tea_to_wrap checkboxes stuffbox">
     <h3>
         <label><?php echo $title ?></label>
     </h3>
@@ -90,7 +90,7 @@
         <!-- Custom background positions -->
         <fieldset class="bg-details bg-position">
             <select name="<?php echo $id ?>[position_x]" >
-                <?php $pxs = isset($val['position']['x']) && !empty($val['position']['x']) ? $val['position']['x'] : 'left' ?>
+                <?php $pxs = isset($val['position_x']) && !empty($val['position_x']) ? $val['position_x'] : 'left' ?>
                 <?php foreach ($details['position']['x'] as $key => $posx): ?>
                     <?php $selected = $pxs == $key ? 'selected="selected"' : '' ?>
                     <option value="<?php echo $key ?>" <?php echo $selected ?>><?php echo $posx ?></option>
@@ -98,7 +98,7 @@
             </select>
 
             <select name="<?php echo $id ?>[position_y]" >
-                <?php $pys = isset($val['position']['y']) && !empty($val['position']['y']) ? $val['position']['y'] : 'top' ?>
+                <?php $pys = isset($val['position_y']) && !empty($val['position_y']) ? $val['position_y'] : 'top' ?>
                 <?php foreach ($details['position']['y'] as $key => $posy): ?>
                     <?php $selected = $pys == $key ? 'selected="selected"' : '' ?>
                     <option value="<?php echo $key ?>" <?php echo $selected ?>><?php echo $posy ?></option>

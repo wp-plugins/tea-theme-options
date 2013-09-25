@@ -1,5 +1,5 @@
 <!-- Content Wordpress <?php echo $mode ?> <?php echo $id ?> -->
-<div id="<?php echo $id ?>_<?php echo $mode ?>_content" class="stuffbox">
+<div id="<?php echo $id ?>_<?php echo $mode ?>_content" class="tea_to_wrap stuffbox">
     <h3>
         <label for="<?php echo $id ?>"><?php echo $title ?></label>
     </h3>

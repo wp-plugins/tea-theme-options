@@ -1,5 +1,5 @@
 <!-- Content radio <?php echo $id ?> -->
-<div id="<?php echo $id ?>_radio_content" class="stuffbox">
+<div id="<?php echo $id ?>_radio_content" class="tea_to_wrap stuffbox">
     <h3>
         <label><?php echo $title ?></label>
     </h3>

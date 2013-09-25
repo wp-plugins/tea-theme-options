@@ -8,7 +8,7 @@
 <?php endif ?>
 
 <!-- Content font <?php echo $id ?> -->
-<div id="<?php echo $id ?>_font_content" class="stuffbox">
+<div id="<?php echo $id ?>_font_content" class="tea_to_wrap stuffbox">
     <h3>
         <label><?php echo $title ?></label>
     </h3>

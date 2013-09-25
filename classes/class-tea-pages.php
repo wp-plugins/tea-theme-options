@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Pages
- * @since Tea Theme Options 1.4.7.4
+ * @since Tea Theme Options 1.4.9
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Pages
  *
- * @since Tea Theme Options 1.4.7.4
+ * @since Tea Theme Options 1.4.9
  *
  */
 class Tea_Pages
@@ -46,7 +46,7 @@ class Tea_Pages
     /**
      * Constructor.
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.9
      */
     public function __construct($identifier)
     {
@@ -72,7 +72,7 @@ class Tea_Pages
             $this->setDirectory();
 
             //Get current page
-            $this->current = isset($_GET['page']) ? $_GET['page'] : '';
+            $this->current = isset($_REQUEST['page']) ? $_REQUEST['page'] : '';
 
             //Update options...
             if (isset($_REQUEST['tea_to_settings']))
@@ -80,7 +80,7 @@ class Tea_Pages
                 $this->updateOptions($_REQUEST, $_FILES);
             }
             //...Or add page or custom post type...
-            else if (isset($_REQUEST['tea_to_dashboard']))
+            else if (isset($_REQUEST['tea_to_configs']))
             {
                 $this->updateContents($_REQUEST);
             }
@@ -107,7 +107,7 @@ class Tea_Pages
      *
      * @uses add_action()
      *
-     * @since Tea Theme Options 1.4.7.4
+     * @since Tea Theme Options 1.4.9
      */
     public function buildMenus()
     {
@@ -150,6 +150,7 @@ class Tea_Pages
                 'slug' => '_' . $page['slug'],
                 'submit' => $page['submit']
             );
+
             //Get contents
             $details = $page['contents'];
 
@@ -314,7 +315,7 @@ class Tea_Pages
     /**
      * Get a content type in JSON format.
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.9
      */
     public function __buildJSONOptions()
     {
@@ -345,7 +346,11 @@ class Tea_Pages
         }
 
         //Get lists
-        $types = $this->getFields();
+        require_once(TTO_PATH . 'classes/class-tea-fields.php');
+        $types = Tea_Fields::getDefaults('fields');
+        $wps = Tea_Fields::getDefaults('wordpress');
+
+        //Get the asked content type
         $type = $request['content'];
 
         //Check if the submitted content is unknown
@@ -361,7 +366,7 @@ class Tea_Pages
         header('HTTP/1.1 200 OK');
 
         //Set types in special case
-        if(in_array($type, array('categories', 'menus', 'pages', 'posts', 'posttypes', 'tags', 'wordpress')))
+        if(array_key_exists($type, $wps))
         {
             $type = 'wordpress';
         }
@@ -383,7 +388,7 @@ class Tea_Pages
      * @uses add_menu_page()
      * @uses add_submenu_page()
      *
-     * @since Tea Theme Options 1.4.7.1
+     * @since Tea Theme Options 1.4.9
      */
     public function __buildMenuPage()
     {
@@ -421,12 +426,22 @@ class Tea_Pages
             {
                 //Add page
                 add_menu_page(
-                    $page['title'],                 //page title
+                    $page['name'],                  //page title
                     $page['name'],                  //page name
                     $this->capability,              //capability
                     $this->identifier,              //parent slug
                     array(&$this, 'buildContent'),  //function to display content
                     $this->icon_small               //icon
+                );
+
+                //Add first subpage
+                add_submenu_page(
+                    $this->identifier,              //parent slug
+                    $page['name'],                  //page name
+                    $page['title'],                 //page title
+                    $this->capability,              //capability
+                    $this->identifier,              //parent slug
+                    array(&$this, 'buildContent')   //function to display content
                 );
             }
             else
@@ -450,7 +465,7 @@ class Tea_Pages
 
             //Build breadcrumb
             $this->breadcrumb[] = array(
-                'title' => $page['name'],
+                'title' => $this->identifier == $page['slug'] ? $page['title'] : $page['name'],
                 'slug' => $page['slug']
             );
         }
@@ -579,7 +594,7 @@ class Tea_Pages
     /**
      * Build content layout.
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.9
      */
     public function buildContent()
     {
@@ -610,12 +625,12 @@ class Tea_Pages
         $contents = $this->pages[$current]['contents'];
 
         //Build contents relatively to the type (special case: Dashboard and Connection pages)
-        if ($current == $this->identifier)
+        if ($this->identifier.'_pages' == $current || $this->identifier.'_cpts' == $current)
         {
             $contents = 1 == count($contents) ? $contents[0] : $contents;
-            $this->buildDashboard($contents);
+            $this->buildConfigs($contents);
         }
-        else if ($this->identifier . '_connections' == $current)
+        else if ($this->identifier.'_connections' == $current)
         {
             $contents = 1 == count($contents) ? $contents[0] : $contents;
             $this->buildConnection($contents);
@@ -634,9 +649,9 @@ class Tea_Pages
      *
      * @param array $contents Contains all data
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.9
      */
-    protected function buildDashboard($contents)
+    protected function buildConfigs($contents)
     {
         //Check if we are in admin panel
         if (!$this->getIsAdmin())
@@ -649,17 +664,17 @@ class Tea_Pages
         $includes = $this->getIncludes();
 
         //Include class field
-        if (!isset($includes['dashboard']))
+        if (!isset($includes['config']))
         {
             //Set the include
-            $this->setIncludes('dashboard');
+            $this->setIncludes('config');
 
             //Require file
-            require_once(TTO_PATH . 'classes/fields/dashboard/class-tea-fields-dashboard.php');
+            require_once(TTO_PATH . 'classes/fields/config/class-tea-fields-config.php');
         }
 
         //Make the magic
-        $field = new Tea_Fields_Dashboard();
+        $field = new Tea_Fields_Config();
         $field->setCurrentPage($page);
         $field->templatePages($contents);
     }
@@ -669,7 +684,7 @@ class Tea_Pages
      *
      * @param number $step Define which default pages do we need
      *
-     * @since Tea Theme Options 1.4.7
+     * @since Tea Theme Options 1.4.9
      */
     protected function buildDefaults($step = 1)
     {
@@ -689,8 +704,15 @@ class Tea_Pages
             $this->addPage($titles, $details);
             unset($titles, $details);
 
-            //Get separator
-            include('tpl/contents/__content_separator.tpl.php');
+            //Get config pages page contents
+            include('tpl/contents/__content_config_pages.tpl.php');
+
+            //Build page with contents
+            $this->addPage($titles, $details);
+            unset($titles, $details);
+
+            //Get config cpts page contents
+            include('tpl/contents/__content_config_cpts.tpl.php');
 
             //Build page with contents
             $this->addPage($titles, $details);
@@ -708,13 +730,6 @@ class Tea_Pages
 
             //Get network connections page contents
             include('tpl/contents/__content_connections.tpl.php');
-
-            //Build page with contents
-            $this->addPage($titles, $details);
-            unset($titles, $details);
-
-            //Get documentation page contents
-            include('tpl/contents/__content_documentation.tpl.php');
 
             //Build page with contents
             $this->addPage($titles, $details);
@@ -762,7 +777,7 @@ class Tea_Pages
      *
      * @param array $contents Contains all data
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.9
      */
     protected function buildType($contents)
     {
@@ -776,7 +791,9 @@ class Tea_Pages
         $includes = $this->getIncludes();
 
         //Get all default fields in the Tea T.O. package
-        $defaults_fields = $this->getFields();
+        require_once(TTO_PATH . 'classes/class-tea-fields.php');
+        $defaults_fields = Tea_Fields::getDefaults('fields');
+        $wps = Tea_Fields::getDefaults('wordpress');
 
         //Iteration on all array
         foreach ($contents as $key => $content)
@@ -792,7 +809,7 @@ class Tea_Pages
             }
 
             //Set types in special case
-            if(in_array($type, array('categories', 'menus', 'pages', 'posts', 'posttypes', 'tags', 'wordpress')))
+            if(array_key_exists($type, $wps))
             {
                 $type = 'wordpress';
             }
@@ -826,7 +843,7 @@ class Tea_Pages
     }
 
     /**
-     * CONTENTS METHODS
+     * ACCESSORS METHODS
      **/
 
     /**
@@ -877,28 +894,6 @@ class Tea_Pages
     protected function setDuration($duration = 86400)
     {
         $this->duration = $duration;
-    }
-
-    /**
-     * Return default values.
-     *
-     * @param string $return Define what to return
-     * @param array $wanted Usefull in social case to return only what the user wants
-     * @return array $defaults All defaults data provided by the Tea TO
-     *
-     * @since Tea Theme Options 1.4.2
-     */
-    protected function getFields()
-    {
-        $defaults = array(
-            'br', 'features', 'heading', 'hr', 'list', 'p', 'checkbox',
-            'hidden', 'radio', 'select', 'multiselect',
-            'text', 'textarea', 'background', 'color', 'font',
-            'include', 'rte', 'social', 'upload', 'wordpress'
-        );
-
-        //Return the array
-        return $defaults;
     }
 
     /**
@@ -1092,7 +1087,7 @@ class Tea_Pages
      *
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.2
+     * @since Tea Theme Options 1.4.9
      */
     protected function updateContents($request)
     {
@@ -1107,19 +1102,19 @@ class Tea_Pages
         $includes = $this->getIncludes();
 
         //Include class field
-        if (!isset($includes['dashboard']))
+        if (!isset($includes['config']))
         {
             //Set the include
-            $this->setIncludes('dashboard');
+            $this->setIncludes('config');
 
             //Require file
-            require_once(TTO_PATH . 'classes/fields/dashboard/class-tea-fields-dashboard.php');
+            require_once(TTO_PATH . 'classes/fields/config/class-tea-fields-config.php');
         }
 
         //Make the magic
-        $field = new Tea_Fields_Dashboard();
+        $field = new Tea_Fields_Config();
         $field->setCurrentPage($page);
-        $field->actionDashboard($request);
+        $field->actionConfig($request);
     }
 
     /**

@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Network
- * @since Tea Theme Options 1.4.7.5
+ * @since Tea Theme Options 1.4.9
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.7.5
+ * @since Tea Theme Options 1.4.9
  *
  */
 class Tea_Fields_Network extends Tea_Fields
@@ -73,9 +73,9 @@ class Tea_Fields_Network extends Tea_Fields
      *
      * @param array $content Contains all data
      *
-     * @since Tea Theme Options 1.4.6
+     * @since Tea Theme Options 1.4.9
      */
-    public function templatePages($content)
+    public function templatePages($content, $post = array())
     {
         //Default variables
         $title = isset($content['title']) ? $content['title'] : __('Tea Network', TTO_I18N);

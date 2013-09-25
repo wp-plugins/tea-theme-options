@@ -1,3 +1,9 @@
+## 1.4.9 (September 25, 2013)
+
+iOS 7 compliant! Euh... bad subject :p
+New default configuration pages and enhancement about Custom post types: you can now add custom fields on post types.
+
+
 ## 1.4.8 (September 18, 2013)
 
 Fix lots of bugs about networks

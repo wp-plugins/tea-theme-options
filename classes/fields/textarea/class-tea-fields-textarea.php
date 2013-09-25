@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Textarea
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.9
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.9
  *
  */
 class Tea_Fields_Textarea extends Tea_Fields
@@ -72,12 +72,21 @@ class Tea_Fields_Textarea extends Tea_Fields
      *
      * @param array $content Contains all data
      *
-     * @since Tea Theme Options 1.4.0
+     * @since Tea Theme Options 1.4.9
      */
-    public function templatePages($content)
+    public function templatePages($content, $post = array())
     {
         //Check if an id is defined at least
-        $this->checkId($content);
+        if (empty($post))
+        {
+            //Check if an id is defined at least
+            $this->checkId($content);
+        }
+        else
+        {
+            //Modify content
+            $content = $content['args']['contents'];
+        }
 
         //Default variables
         $id = $content['id'];
@@ -87,9 +96,21 @@ class Tea_Fields_Textarea extends Tea_Fields
         $description = isset($content['description']) ? $content['description'] : '';
         $rows = isset($content['rows']) ? $content['rows'] : '8';
 
-        //Check selected
-        $val = $this->getOption($id, $std);
-        $val = stripslashes($val);
+        //Default way
+        if (empty($post))
+        {
+            //Check selected
+            $val = $this->getOption($id, $std);
+            $val = stripslashes($val);
+        }
+        //On CPT
+        else
+        {
+            //Check selected
+            $value = get_post_custom($post->ID);
+            $val = isset($value[$post->post_type . '-' . $id]) ? $value[$post->post_type . '-' . $id][0] : $std;
+            $val = stripslashes($val);
+        }
 
         //Get template
         include('in_pages.tpl.php');

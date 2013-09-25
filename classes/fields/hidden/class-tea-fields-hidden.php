@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Hidden
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.9
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.0
+ * @since Tea Theme Options 1.4.9
  *
  */
 class Tea_Fields_Hidden extends Tea_Fields
@@ -69,9 +69,9 @@ class Tea_Fields_Hidden extends Tea_Fields
      *
      * @param array $content Contains all data
      *
-     * @since Tea Theme Options 1.4.0
+     * @since Tea Theme Options 1.4.9
      */
-    public function templatePages($content)
+    public function templatePages($content, $post = array())
     {
         //Check if an id is defined at least
         $this->checkId($content);

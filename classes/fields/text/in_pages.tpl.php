@@ -1,5 +1,5 @@
 <!-- Content <?php echo $type ?> <?php echo $id ?> -->
-<div id="<?php echo $id ?>_text_content" class="stuffbox">
+<div id="<?php echo $id ?>_text_content" class="tea_to_wrap stuffbox">
     <h3>
         <label for="<?php echo $id ?>"><?php echo $title ?></label>
     </h3>
