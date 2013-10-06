@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Multiselect
- * @since Tea Theme Options 1.4.9
+ * @since Tea Theme Options 1.4.9.4
  *
  */
 
@@ -128,7 +128,7 @@ class Tea_Fields_Multiselect extends Tea_Fields
      * @param array $content Content sent throught Dahsboard forms.
      * @return array $content Content modified.
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.4
      */
     static function saveContent($content)
     {

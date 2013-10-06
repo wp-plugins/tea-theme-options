@@ -13,6 +13,9 @@ The Tea Theme Options allows you to easily add professional looking theme option
 
 == Changelog ==
 
+= 1.4.9.4 (October 7, 2013) =
+Make the new version completely compatible with old versions, and add new display and new descriptions on configuration pages.
+
 = 1.4.9.3 (September 25, 2013) =
 Fix bug on static functions.
 

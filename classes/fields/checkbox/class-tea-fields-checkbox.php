@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Checkbox
- * @since Tea Theme Options 1.4.9
+ * @since Tea Theme Options 1.4.9.4
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.9
+ * @since Tea Theme Options 1.4.9.4
  *
  */
 class Tea_Fields_Checkbox extends Tea_Fields
@@ -128,7 +128,7 @@ class Tea_Fields_Checkbox extends Tea_Fields
      * @param array $content Content sent throught Dahsboard forms.
      * @return array $content Content modified.
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.4
      */
     static function saveContent($content)
     {

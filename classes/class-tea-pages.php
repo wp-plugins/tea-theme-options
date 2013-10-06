@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Pages
- * @since Tea Theme Options 1.4.9
+ * @since Tea Theme Options 1.4.9.4
  *
  */
 
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  *
  * To get its own Pages
  *
- * @since Tea Theme Options 1.4.9
+ * @since Tea Theme Options 1.4.9.4
  *
  */
 class Tea_Pages
@@ -684,7 +684,7 @@ class Tea_Pages
      *
      * @param number $step Define which default pages do we need
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.4
      */
     protected function buildDefaults($step = 1)
     {

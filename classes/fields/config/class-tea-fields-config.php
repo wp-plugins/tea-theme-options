@@ -4,7 +4,7 @@
  * 
  * @package TakeaTea
  * @subpackage Tea Fields Config
- * @since Tea Theme Options 1.4.9.2
+ * @since Tea Theme Options 1.4.9.4
  *
  */
 
@@ -25,7 +25,7 @@ require_once(TTO_PATH . 'classes/class-tea-fields.php');
  *
  * To get its own Fields
  *
- * @since Tea Theme Options 1.4.9.2
+ * @since Tea Theme Options 1.4.9.4
  *
  */
 class Tea_Fields_Config extends Tea_Fields
@@ -86,7 +86,7 @@ class Tea_Fields_Config extends Tea_Fields
      *
      * @param array $content Contains all data
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.4
      */
     public function templatePagesDefaults($content)
     {
@@ -157,7 +157,7 @@ class Tea_Fields_Config extends Tea_Fields
      *
      * @param array $content Contains all data
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.4
      */
     public function templatePagesCpts($content)
     {
@@ -298,7 +298,7 @@ class Tea_Fields_Config extends Tea_Fields
      *
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.4
      */
     protected function addPage($request)
     {
@@ -408,7 +408,7 @@ class Tea_Fields_Config extends Tea_Fields
      *
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.4
      */
     protected function savePage($request)
     {
@@ -555,7 +555,7 @@ class Tea_Fields_Config extends Tea_Fields
      *
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.4
      */
     protected function addCustomPostType($request)
     {
@@ -596,7 +596,7 @@ class Tea_Fields_Config extends Tea_Fields
      *
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.9.2
+     * @since Tea Theme Options 1.4.9.4
      */
     protected function editCustomPostType($request)
     {
@@ -680,7 +680,7 @@ class Tea_Fields_Config extends Tea_Fields
      *
      * @param array $request Contains all data sent in $_REQUEST method
      *
-     * @since Tea Theme Options 1.4.9
+     * @since Tea Theme Options 1.4.9.4
      */
     protected function saveCustomPostType($request)
     {
