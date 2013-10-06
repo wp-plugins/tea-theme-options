@@ -92,6 +92,7 @@ class Tea_Fields_Config extends Tea_Fields
     {
         //Default variables
         $title = isset($content['title']) ? $content['title'] : __('Tea pages configuration', TTO_I18N);
+        $description = isset($content['description']) ? $content['description'] : '';
         $page = $this->getCurrentPage();
         $includes = $this->getIncludes();
         $contents = array();
@@ -162,6 +163,7 @@ class Tea_Fields_Config extends Tea_Fields
     {
         //Default variables
         $title = isset($content['title']) ? $content['title'] : __('Tea CPTs configurations', TTO_I18N);
+        $description = isset($content['description']) ? $content['description'] : '';
         $page = $this->getCurrentPage();
         $includes = $this->getIncludes();
         $contents = array();
@@ -310,6 +312,7 @@ class Tea_Fields_Config extends Tea_Fields
         //Get vars
         $title = $request['tea_add_page_title'];
         $slug = sanitize_title_with_dashes($title);
+        $slug = str_replace('-', '_', $slug);
         $description = isset($request['tea_add_page_description']) ? $request['tea_add_page_description'] : '';
         $submit = isset($request['tea_add_page_submit']) ? $request['tea_add_page_submit'] : '1';
         $submit = '1' == $submit ? true : false;
@@ -464,6 +467,7 @@ class Tea_Fields_Config extends Tea_Fields
 
                     //Make the new ID
                     $sanittitle = sanitize_title_with_dashes($ctn['title']);
+                    $sanittitle = str_replace('-', '_', $sanittitle);
                     $ctn['id'] = !empty($old_id) ? $old_id : $slug . '_' . $sanittitle;
                 }
 
@@ -565,6 +569,7 @@ class Tea_Fields_Config extends Tea_Fields
         //Get vars
         $title = $request['tea_add_cpt_title'];
         $slug = sanitize_title_with_dashes($title);
+        $slug = str_replace('-', '_', $slug);
 
         //Get all pages
         $cpts = _get_option('tea_config_cpts', array());
@@ -662,7 +667,6 @@ class Tea_Fields_Config extends Tea_Fields
 
         //Options
         unset($cpts[$slug]['options']);
-        $cpts[$slug]['options']['public'] = isset($tac['options']['public']) && $tac['options']['public'] ? true : false;
         $cpts[$slug]['options']['hierarchical'] = isset($tac['options']['hierarchical']) && $tac['options']['hierarchical'] ? true : false;
         $cpts[$slug]['options']['query_var'] = isset($tac['options']['query_var']) && $tac['options']['query_var'] ? true : false;
         $cpts[$slug]['options']['can_export'] = isset($tac['options']['can_export']) && $tac['options']['can_export'] ? true : false;
@@ -735,6 +739,7 @@ class Tea_Fields_Config extends Tea_Fields
 
                     //Make the new ID
                     $sanittitle = sanitize_title_with_dashes($ctn['title']);
+                    $sanittitle = str_replace('-', '_', $sanittitle);
                     $ctn['id'] = !empty($old_id) ? $old_id : $slug . '_' . $sanittitle;
                 }
 
@@ -765,6 +770,7 @@ class Tea_Fields_Config extends Tea_Fields
         $cpts[$slug]['description'] = isset($request['tea_add_cptcontent']['description']) ? $request['tea_add_cptcontent']['description'] : '';
         $cpts[$slug]['singular'] = isset($request['tea_add_cptcontent']['singular']) ? $request['tea_add_cptcontent']['singular'] : '';
         $cpts[$slug]['contents'] = $currents;
+        $cpts[$slug]['options']['public'] = isset($request['tea_add_cptcontent']['options']['public']) && $request['tea_add_cptcontent']['options']['public'] ? true : false;
 
         //Insert contents in DB
         _set_option('tea_config_cpts', $cpts);

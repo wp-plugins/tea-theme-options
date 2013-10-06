@@ -717,17 +717,17 @@ class Tea_Pages
             //Build page with contents
             $this->addPage($titles, $details);
             unset($titles, $details);
-        }
-        //Get the next one at the end
-        else
-        {
+
             //Get separator
             include('tpl/contents/__content_separator.tpl.php');
 
             //Build page with contents
             $this->addPage($titles, $details);
             unset($titles, $details);
-
+        }
+        //Get the next one at the end
+        else
+        {
             //Get network connections page contents
             include('tpl/contents/__content_connections.tpl.php');
 

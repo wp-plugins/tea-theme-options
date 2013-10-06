@@ -3,7 +3,7 @@
 
 ## Simple, easy to use and fully integrated Theme Options Plugin for Wordpress.
 
-The [Tea Theme Options](http://takeatea.github.com/tea_to_wp/) (or **Tea TO**) allows you to easily add professional looking theme options panels to your WordPress theme. The **Tea TO** is built for [Wordpress](http://wordpress.org "CMS Wordpress") v3.x and uses the Wordpress built-in pages.
+The [Tea Theme Options](https://github.com/Takeatea/tea_theme_options) (or **Tea TO**) allows you to easily add professional looking theme options panels to your WordPress theme. The **Tea TO** is built for [Wordpress](http://wordpress.org "CMS Wordpress") v3.x and uses the Wordpress built-in pages.
 
 + [**Options API**](http://codex.wordpress.org/Options_API) - A simple and standardized way of storing data in the database.
 + [**Transients API**](http://codex.wordpress.org/Transients_API) - Very similar to the Options API but with the added feature of an expiration time, which simplifies the process of using the wp_options database table to temporarily store cached information.

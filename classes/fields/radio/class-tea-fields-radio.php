@@ -164,6 +164,7 @@ class Tea_Fields_Radio extends Tea_Fields
 
             //Create value from label
             $value_sanitized = sanitize_title_with_dashes($ctn[1]);
+            $value_sanitized = str_replace('-', '_', $value_sanitized);
             $content['options'][$k][0] = $value_sanitized;
         }
 

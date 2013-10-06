@@ -151,7 +151,6 @@
                                         <?php
                                             $cptval = isset($item['options']) ? $item['options'] : array();
                                             $opts = array(
-                                                'public' => __('The <code>public</code> argument is a kind of catchall argument for several other arguments and defaults to <code>false</code>', TTO_I18N),
                                                 'hierarchical' => __('The <code>hierarchical</code> argument allows you to choose whether you want your post type to be hierarchical', TTO_I18N),
                                                 'query_var' => __('The <code>query_var</code> argument allows you to control the query variable used to get posts of this type', TTO_I18N),
                                                 'can_export' => __('The <code>can_export</code> argument allows you to decide whether posts of your post type can be exportable via the WordPress export tool', TTO_I18N)
@@ -184,6 +183,18 @@
                         <div class="tea-post-body">
                             <div class="tea-post-body-content">
 
+                                <?php if (!in_array($item['slug'], array('post', 'page'))): ?>
+                                    <!-- Options -->
+                                    <div class="dashboard-content">
+                                        <?php $ispublic = isset($item['options']['public']) ? $item['options']['public'] : false ?>
+                                        <label>
+                                            <input type="checkbox" name="tea_add_cptcontent[options][public]" value="1" <?php echo $ispublic ? 'checked="checked"' : '' ?> />
+                                            <?php _e('Enable your post type?', TTO_I18N) ?>
+                                        </label>
+                                    </div>
+                                    <!-- /Options -->
+                                <?php endif ?>
+
                                 <!-- Content list -->
                                 <div class="dashboard-contents-all">
                                     <?php if (isset($item['contents']) && !empty($item['contents'])): ?>
@@ -192,13 +203,13 @@
                                             foreach ($item['contents'] as $cont):
                                         ?>
                                             <div class="dashboard-content">
-                                                <a href="#" class="delete"><?php _e('Delete', TTO_I18N) ?></a>
                                                 <?php
                                                     //Build class
                                                     $class = 'Tea_Fields_' . ucfirst($cont['type']);
                                                     $field = new $class();
                                                     $field->templateDashboard($num, $cont);
                                                 ?>
+                                                <a href="#" class="delete"><?php _e('Delete', TTO_I18N) ?></a>
                                             </div>
                                             <?php $num++ ?>
                                         <?php endforeach ?>

@@ -209,12 +209,11 @@
     font-style:italic;
     height:20px;
     line-height:20px;
-    margin-right:20px;
+    margin-right:2px;
 }
 .tea_to.wrap .dashboard-content .delete {
     color:#bc0b0b;
     display:block;
-    float:right;
     height:20px;
     line-height:20px;
     text-decoration:none;

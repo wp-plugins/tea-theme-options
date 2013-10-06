@@ -62,13 +62,13 @@
                                             foreach ($item['contents'] as $cont):
                                         ?>
                                             <div class="dashboard-content">
-                                                <a href="#" class="delete"><?php _e('Delete', TTO_I18N) ?></a>
                                                 <?php
                                                     //Build class
                                                     $class = 'Tea_Fields_' . ucfirst($cont['type']);
                                                     $field = new $class();
                                                     $field->templateDashboard($num, $cont);
                                                 ?>
+                                                <a href="#" class="delete"><?php _e('Delete', TTO_I18N) ?></a>
                                             </div>
                                             <?php $num++ ?>
                                         <?php endforeach ?>
